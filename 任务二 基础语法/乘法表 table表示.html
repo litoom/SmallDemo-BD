@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <table border="1">
+  <script>
+    for (let i = 1; i < 10; i++) {
+      document.write("<tr>");
+      for (let j = 1; j <= i; j++) {
+        document.write(`<td> ${j} X ${i} = ${i * j} &nbsp&nbsp </td>`);
+      }
+      document.write("</tr>");
+    }
+  </script>
+  </table>
+  <script>
+
+    //获取当前时间
+    let now = new Date();
+    
+    //now.toTimeString()  将当前之间的时分秒提取出字符串
+    if (24 - parseInt(now.toTimeString()) > 12) {
+      alert("早");
+    } else {
+      alert("睡觉");
+    }
+    //console.log(parseInt(now.toTimeString()));
+    //console.log(now.toTimeString());
+    // console.log(typeof now.toTimeString());
+
+  </script>
+</body>
+
+</html>

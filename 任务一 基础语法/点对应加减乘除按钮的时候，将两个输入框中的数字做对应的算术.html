@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="first-input" placeholder="请输入第一个数">
+  <input type="text" id="second-input" placeholder="请输入第一个数">
+  <button id="add-btn">加</button>
+  <button id="minus-btn">减</button>
+  <button id="times-btn">乘</button>
+  <button id="divide-btn">除</button>
+  <p id="result"></p>
+</body>
+<script>
+  let firstnum = document.getElementById("first-input");
+  let secondnum = document.getElementById("second-input");
+  let result = document.getElementById("result");
+
+  let addbtn = document.getElementById("add-btn");
+  let minusbtn = document.getElementById("minus-btn");
+  let timesbtn = document.getElementById("times-btn");
+  let dividebtn = document.getElementById("divide-btn");
+
+  addbtn.onclick = function () {
+    //alert(firstnum.value);
+     result.innerText = +firstnum.value + +secondnum.value;
+  }
+  minusbtn.onclick = function () {
+    
+     result.innerText = +firstnum.value - +secondnum.value;
+  }
+  timesbtn.onclick = function () {
+    result.innerText = +firstnum.value * +secondnum.value;
+  }
+  dividebtn.onclick = function () {
+    result.innerText = +firstnum.value / +secondnum.value;
+  }
+</script>
+
+</html>

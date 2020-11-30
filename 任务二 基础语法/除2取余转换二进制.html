@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 妈呀，手怎么这么笨的 -->
+<!-- 二进制 数组收集数字 -->
+
+<body>
+  <input type="text" id="dec-number" placeholder="请输入一个十进制数">
+  <button id="trans-btn">转换为二进制</button>
+  <p id="result">结果</p>
+
+  <script>
+    //获取点击按钮
+    let transBtn = document.getElementById("trans-btn");
+
+     function dec2bin () {
+      //获取表单内输入的数字，因为加载原因 所以要写到onclick里面
+      let decNumber = document.getElementById("dec-number").value;
+
+      //获取结果p
+      let result = document.getElementById("result");
+      //接收二进制数字
+      let jieshou = [];
+      //二进制计算
+      if (decNumber >= 0) {
+        while ((decNumber / 2) > 0) {
+          jieshou.push(decNumber % 2);
+          decNumber = Math.floor(decNumber / 2);
+        }
+      }
+      let resultR = jieshou.reverse();
+      result.innerHTML = "二进制：" + resultR;
+      // console.log(jieshou.reverse());
+    };
+     transBtn.onclick = dec2bin;
+  </script>
+</body>
+
+</html>

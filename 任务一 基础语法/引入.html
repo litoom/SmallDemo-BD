@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+<body>
+  <h1>Demo</h1>
+  <p id="content-wrapper">Who are you?</p>
+  <input type="text" id="name-input" placeholder="请输入你的名字">
+  <button id="sent-btn">sent</button>
+
+</body>
+<script>
+  document.getElementById("sent-btn").onclick = function () {
+    document.getElementById("content-wrapper").innerHTML = "hello , " + document.getElementById("name-input").value;
+  };
+
+</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

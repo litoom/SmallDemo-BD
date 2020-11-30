@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //含3的数字和3的倍数的数字
+    for (let i = 1; i <= 100; i++) {
+      if (i % 10 == 3 || Math.floor(i / 10) == 3) {
+        console.log("pass");
+      } else if (i % 3 == 0) {
+        console.log("pass");
+      } else {
+        console.log(i);
+      }
+    }
+  </script>
+</body>
+
+</html>
