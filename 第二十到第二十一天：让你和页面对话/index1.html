@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input id="name" type="text">
+  <button id="submit-btn">Submit</button>
+
+  <script>
+    /*
+    需求：
+      当点击按钮 submit-btn 时，在console中输出 name 中的内容
+      在输入过程中，如果按回车键，则同样执行上一条的需求
+      在输入过程中，如果按 ESC 键，则把输入框中的内容清空
+    */
+    //获取button和input节点
+    let submitBtn = document.getElementById("submit-btn");
+    let input = document.getElementById(id = "name");
+    //为button绑定响应函数
+    submitBtn.onclick = function () {
+      console.log(input.value);
+    }
+
+    //获取按键的keyCode
+    // document.onkeydown = function () {
+    //   alert(event.keyCode);
+    // }
+ 
+    input.onkeydown = function () {
+      switch (event.keyCode){
+        case 13 : console.log(input.value);
+        case 27 : input.value = "";
+      }
+    }
+    
+  </script>
+</body>
+
+</html>
