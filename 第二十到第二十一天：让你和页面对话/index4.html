@@ -24,7 +24,67 @@
     let fadeObj = document.getElementById("fade-obj");
     let fadeBtn = document.getElementById("fade-btn");
 
+    let num = 1;
+    function timeIn () {
+      if(num > 0 ) {
+        num -= 0.01;
+        fadeObj.style.opacity = num;
+        fadeBtn.disabled = "disabled";  
+        var tem1 = setTimeout(timeIn,10);    
+      }else { 
+        num = 0;
+        fadeObj.style.opacity = num;
+        fadeBtn.innerText = "淡入";
+        fadeBtn.disabled = "";
+         clearTimeout(tem1);
+         //alert(fadeObj.style.opacity);
+      }
+    }
+    
 
+    function timeOut () {      
+      if(num < 1 ) {
+        num += 0.01;
+        fadeObj.style.opacity = num;
+        fadeBtn.disabled = "disabled";
+        var tem2 = setTimeout(timeOut,10);
+      }else {
+        num = 1;
+        fadeObj.style.opacity = num;
+        fadeBtn.innerText = "淡出";
+        fadeBtn.disabled = "";
+       clearTimeout(tem2);
+       //alert(fadeObj.style.opacity);
+      }      
+    }
+  
+    fadeBtn.onclick = function () {
+      if(fadeBtn.innerText === "淡出") {
+        timeIn();
+      }else {
+        timeOut();   
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*        setInterval
     let opacitynum = 1;
     let tem = 0.01;
     let close = fadeBtn.onclick = function () {
@@ -40,7 +100,7 @@
         
       }, 50);
     }
-    clearInterval(close);
+*/
 
   </script>
 </body>
