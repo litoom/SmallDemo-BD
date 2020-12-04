@@ -24,30 +24,62 @@
     let fadeObj = document.getElementById("fade-obj");
     let fadeBtn = document.getElementById("fade-btn");
 
+// ******************setInterval方法******************
+    let num = 1;
+    fadeBtn.onclick = function () {
+      if (fadeBtn.innerText == "淡出") {
+        var tem1 = setInterval(function () {
+          num -= 0.03;
+          fadeObj.style.opacity = num;
+          fadeBtn.disabled = "disabled";
+          if (num < 0) {
+            fadeBtn.disabled = "";
+            fadeBtn.innerText = "淡入";
+            num = 0;
+            clearInterval(tem1);
+          }
+        }, 10);
+      } else {
+        var tem2 = setInterval(function () {
+          num += 0.03;
+          fadeObj.style.opacity = num;
+          fadeBtn.disabled = "disabled";
+          if (num > 1) {
+            fadeBtn.disabled = "";
+            fadeBtn.innerText = "淡出";
+            num = 1;
+            clearInterval(tem2);
+          }
+        }, 10);
+      }
+    }
+
+/*************setTimeout方法**********************************
     let num = 1;
     function timeIn () {
       if(num > 0 ) {
-        num -= 0.01;
+        num -= 0.1;
         fadeObj.style.opacity = num;
         fadeBtn.disabled = "disabled";  
-        var tem1 = setTimeout(timeIn,10);    
+        var tem1 = setTimeout(timeIn,100);    
       }else { 
-        num = 0;
-        fadeObj.style.opacity = num;
+        // num = 0;
+        // fadeObj.style.opacity = num;
         fadeBtn.innerText = "淡入";
         fadeBtn.disabled = "";
-         clearTimeout(tem1);
+         //clearTimeout(tem1);
          //alert(fadeObj.style.opacity);
+         return;
       }
     }
     
 
     function timeOut () {      
       if(num < 1 ) {
-        num += 0.01;
+        num += 0.1;
         fadeObj.style.opacity = num;
         fadeBtn.disabled = "disabled";
-        var tem2 = setTimeout(timeOut,10);
+        var tem2 = setTimeout(timeOut,100);
       }else {
         num = 1;
         fadeObj.style.opacity = num;
@@ -55,6 +87,7 @@
         fadeBtn.disabled = "";
        clearTimeout(tem2);
        //alert(fadeObj.style.opacity);
+       return
       }      
     }
   
@@ -65,43 +98,7 @@
         timeOut();   
       }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*        setInterval
-    let opacitynum = 1;
-    let tem = 0.01;
-    let close = fadeBtn.onclick = function () {
-      setInterval(function () {
-        fadeObj.style.opacity = opacitynum - tem;
-        opacitynum = opacitynum - tem;
-        fadeBtn.disabled = "disabled";
-        if (opacitynum < 0) {
-          fadeObj.style.opacity = 0.5;
-          fadeBtn.disabled = "";
-          fadeBtn.innerText = "淡入";
-        }
-        
-      }, 50);
-    }
 */
-
   </script>
 </body>
 
