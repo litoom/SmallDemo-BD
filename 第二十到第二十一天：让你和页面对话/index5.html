@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #box {
+    background-image: url(a.jpg);
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    width: 480px;
+    height: 480px;
+  }
+</style>
+
+<body>
+  <div id="box"></div>
+
+  <script>
+    let box = document.getElementById("box");
+    //box.style.backgroundPositionY = -7680 + "px";
+    let num = 0;
+    //let lTime = setInterval(function () {
+      let oTime = setInterval(function () {
+        num -= 480;
+        box.style.backgroundPositionY = num + "px";
+        if(num == -7680 ) {
+          num = 0;
+        }
+        console.log(num);
+      }, 100);
+    //}, 1000);
+  </script>
+</body>
+
+</html>
