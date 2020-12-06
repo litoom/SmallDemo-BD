@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input id="stack-input" type="text">
+  <p id="stack-cont">栈内容：apple-&gt;pear</p>
+  <button id="push-btn">进栈</button>
+  <button id="pop-btn">退栈</button>
+  <button id="font-btn">打印栈顶元素内容</button>
+  <button id="empty-btn">判断栈是否为空</button>
+
+  <script>
+
+    var stack = ["apple", "pear", "banana"];
+
+    let stackCont = document.getElementById("stack-cont");
+
+    let pushBtn = document.getElementById("push-btn");
+    let popBtn = document.getElementById("pop-btn");
+    let fontBtn = document.getElementById("font-btn");
+    let emptyBtn = document.getElementById("empty-btn");
+
+    let newStack = new Stack();
+
+    pushBtn.onclick = function () {
+      newStack.push(stack.shift());
+      stackCont.innerHTML = newStack.toString();
+    }
+
+    popBtn.onclick = function() {
+      newStack.pop();
+      stackCont.innerHTML = newStack.toString();
+    }
+
+    fontBtn.onclick = function() {
+      console.log(newStack.peek());
+    }
+    emptyBtn.onclick = function() {
+      alert(newStack.isEmpty());
+    }
+
+
+    //栈的封装
+    function Stack() {
+      this.items = [];
+      //入栈
+      Stack.prototype.push = function (element) {
+        this.items.push(element);
+      }
+      //出栈
+      Stack.prototype.pop = function () {
+        return this.items.pop();
+      }
+      //3.查看栈顶元素
+      Stack.prototype.peek = function () {
+        return this.items[this.items.length - 1]
+      }
+      //4.判空
+      Stack.prototype.isEmpty = function () {
+        return this.items.length == 0;
+      }
+
+      //5.获取栈元素的个数
+      Stack.prototype.size = function () {
+        return this.items.length;
+      }
+      //6.toString方法
+      Stack.prototype.toString = function () {
+        // let resultString = "";
+        // for(let i = 0; i < this.items.length; i++) {
+        //   resultString += this.items[i] + "";
+        // }
+        // return resultString;
+
+        //join()  将数组转换为一个字符串，并返回  参数是数组元素的链接符
+        return this.items.join("-->");
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>
