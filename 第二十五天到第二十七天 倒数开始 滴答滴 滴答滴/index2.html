@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p id="ps"></p>
+  <p id="ps2"></p>
+  <script>
+    // 不适使用构造函数创建date 返回的是字符串
+
+    let ps = document.getElementById("ps");
+    let ps2 = document.getElementById("ps2");
+    setInterval(diaplay, 500);
+
+    //实时显示当前时间
+    function diaplay() {
+      let now = new Date();
+      let year = now.getFullYear();
+      let month = addZero(now.getMonth() + 1);
+      let day = addZero(now.getDate());
+      let hours = addZero(now.getHours());
+      let minute = addZero(now.getMinutes());
+      let seconds = addZero(now.getSeconds());
+
+      let ampm;
+      if (hours > 12 && hours < 24) {
+        ampm = "Pm";
+      } else {
+        ampm = "Am";
+      }
+
+      ps.innerText = `${year}年${month}月${day}日 ${weekPlay()} ${hours}时${minute}分${seconds}`;
+      ps2.innerText = `${year}-${month}-${day}-${weekPlay()}-${hours}:${minute}:${seconds}-${ampm}`;
+    }
+
+
+    //显示星期几
+    function weekPlay() {
+      let weekday = new Date();
+      // console.log(weekday);
+      let week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"];
+      return week[weekday.getDay() - 1];
+    }
+
+    //补0操作
+    function addZero(num) {
+      if (num < 10) {
+        num = "0" + num;
+      }
+      return num;
+    }
+  </script>
+</body>
+
+</html>

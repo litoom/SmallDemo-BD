@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function GoSteps(n) {
+      n = +n;
+      console.log(n);
+      if (Math.floor(n) && (n >= 0)) {
+        for (let i = 0; i < Math.floor(n); i++) {
+          console.log("Go");
+        }
+      } else if(n == NaN) {
+        console.log("xx");
+      }
+    }
+    GoSteps();
+  </script>
+</body>
+
+</html>
