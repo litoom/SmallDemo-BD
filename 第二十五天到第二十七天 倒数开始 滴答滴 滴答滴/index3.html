@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <select id="year-select">
+    <option value="2019">2019</option>
+    <option value="2001">2001</option>
+    <option value="2020">2020</option>
+    ……
+    <option value="2032">2032</option>
+  </select>
+
+  <select id="month-select">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    ……
+    <option value="12">12</option>
+  </select>
+
+  <select id="day-select">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    ……
+    <option value="31">31</option>
+  </select>
+
+  <select id="hour-select">
+    <option value="0">00</option>
+    <option value="1">01</option>
+    ……
+    <option value="23">23</option>
+  </select>
+
+  <select id="minite-select">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    ……
+    <option>59</option>
+  </select>
+
+  <select id="second-select">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    ……
+    <option>59</option>
+  </select>
+
+  <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+  <p id="result-wrapper2">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+  <script>
+    //获取下拉列表的时间
+    function selectDate() {
+      let dateValue = document.getElementsByTagName("select");
+      let yearValue = dateValue[0].value;
+      let monthValue = dateValue[1].value;
+      let dayValue = dateValue[2].value;
+      let hoursValue = dateValue[3].value;
+      let minValue = dateValue[4].value;
+      let secValue = dateValue[5].value;
+      //  console.log(yearValue);
+
+      //选中的时间距离1970.1.1过去的毫秒数
+      let timeLast = Date.parse(`${monthValue},${dayValue},${yearValue},${hoursValue}:${minValue}:${secValue}`);
+
+      let resultWrapper = document.getElementById("result-wrapper");
+      resultWrapper.innerHTML = `现在距离 ${yearValue}年${monthValue}月${dayValue}日${weekPlay()} ${hoursValue}:${minValue}:${secValue}`;
+
+      //判断星期几
+      function weekPlay() {
+        let weekday = new Date(`${monthValue},${dayValue},${yearValue}`);
+        // console.log(weekday);
+        let week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"];
+        return week[weekday.getDay() - 1];
+      }
+      //console.log(weekPlay());
+      return timeLast;
+    }
+
+    function nowTime() {
+      //现在的时间
+      let now = new Date();
+      let nowYear = now.getFullYear();
+      let nowMonth = now.getMonth() + 1;
+      let nowDay = now.getDate();
+      let nowHours = now.getHours();
+      let nowMinute = now.getMinutes();
+      let nowSeconds = now.getSeconds();
+      //console.log(nowYear,nowMonth,nowDay,nowHours,nowMinute,nowSeconds);
+      //目前时间距离1970.1.1过去的毫秒数
+      let timeNow = Date.parse(`${nowMonth},${nowDay},${nowYear},${nowHours}:${nowMinute}:${nowSeconds}`);
+      // console.log(timeNow);
+
+      return timeNow;
+    }
+    
+    
+    setInterval(Time, 1000);
+
+    function Time() {
+      let timeLast = selectDate();
+      let timeNow = nowTime();
+      //差的毫秒数
+      let tem = timeNow - timeLast;
+      //天数
+
+      let day = Math.floor(tem / (24 * 60 * 60 * 1000));
+      //console.log(day);
+      //小时数
+      let hours = Math.floor(tem / (60 * 60 * 1000) - day * 24);
+      //console.log(hours);
+      //分钟数
+      let min = Math.floor(tem / (60 * 1000) - hours * 60 - day * 24 * 60);
+      //console.log(min);
+      //秒数
+      let secmills = Math.floor(tem / 1000 - day * 24 * 60 * 60 - hours * 60 * 60 - min * 60);
+      //console.log(secmills);
+
+      let resultWrapper2 = document.getElementById("result-wrapper2");
+      if (tem < 0) {
+        resultWrapper2.innerHTML = `还有${-day}天${hours}小时${min}分${secmills}秒`;
+      } else {
+        resultWrapper2.innerHTML = `已经过了${day}天${hours}小时${min}分${secmills}秒`;
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>
